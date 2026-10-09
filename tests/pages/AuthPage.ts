@@ -1,21 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-
-export type NewUser = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-export function uniqueUser(): NewUser {
-  const stamp = Date.now();
-
-  return {
-    name: `User${stamp}`,
-    email: `user${stamp}@mail.com`,
-    password: 'Qwerty123!',
-  };
-}
+import { AccountUser } from '../types/AccountUser';
 
 export class AuthPage extends BasePage {
   protected readonly path = '/login';
@@ -39,8 +24,8 @@ export class AuthPage extends BasePage {
     this.loginError = this.page.getByText('Your email or password is incorrect!');
   }
 
-  async startSignup(user: NewUser) {
-    await this.signupName.fill(user.name);
+  async startSignup(user: AccountUser) {
+    await this.signupName.fill(user.firstName);
     await this.signupEmail.fill(user.email);
     await this.signupButton.click();
   }

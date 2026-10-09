@@ -1,9 +1,0 @@
-- heading " Women" [level=4]:
-  - link " Women":
-    - /url: "#Women"
-- heading " Men" [level=4]:
-  - link " Men":
-    - /url: "#Men"
-- heading " Kids" [level=4]:
-  - link " Kids":
-    - /url: "#Kids"

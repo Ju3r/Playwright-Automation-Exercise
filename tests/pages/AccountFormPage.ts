@@ -1,9 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-
-type AccountUser = {
-  password: string;
-};
+import { AccountUser } from '../types/AccountUser';
 
 export class AccountFormPage extends BasePage {
   protected readonly path = '/signup';
@@ -43,24 +40,24 @@ export class AccountFormPage extends BasePage {
     this.continueButton = this.page.locator('[data-qa="continue-button"]');
   }
 
-  async fill(user: AccountUser) {
+  async fillUserInformation(user: AccountUser) {
     await this.genderMr.check();
     await this.password.fill(user.password);
-    await this.days.selectOption('1');
-    await this.months.selectOption('1');
-    await this.years.selectOption('1990');
-    await this.firstName.fill('Test');
-    await this.lastName.fill('User');
-    await this.address.fill('Street 1');
-    await this.country.selectOption('Canada');
-    await this.state.fill('ON');
-    await this.city.fill('Toronto');
-    await this.zipcode.fill('A1A1A1');
-    await this.mobile.fill('1234567890');
+    await this.days.selectOption(String(user.birthdate.getDate()));
+    await this.months.selectOption(String(user.birthdate.getMonth()));
+    await this.years.selectOption(String(user.birthdate.getFullYear()));
+    await this.firstName.fill(user.firstName);
+    await this.lastName.fill(user.lastName);
+    await this.address.fill(user.address);
+    await this.country.selectOption(user.country);
+    await this.state.fill(user.state);
+    await this.city.fill(user.city);
+    await this.zipcode.fill(user.zipcode);
+    await this.mobile.fill(user.mobile);
   }
 
-  async submit(user: AccountUser) {
-    await this.fill(user);
+  async submitUserInformation(user: AccountUser) {
+    await this.fillUserInformation(user);
     await this.createAccount.click();
   }
 

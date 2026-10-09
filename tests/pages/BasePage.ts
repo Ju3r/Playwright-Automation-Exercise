@@ -11,7 +11,7 @@ export abstract class BasePage {
     this.headerLocator = this.page.locator('#header');
   }
 
-  async open() {
+  async openPage() {
     await this.page.goto(`${this.baseUrl}${this.path}`, {
       waitUntil: 'domcontentloaded',
       timeout: 60_000,
