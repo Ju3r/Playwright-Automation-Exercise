@@ -1,0 +1,17 @@
+- heading "recommended items" [level=2]
+- img "ecommerce website products"
+- heading /Rs\. \d+/ [level=2]
+- paragraph: Stylish Dress
+- text:  Add to cart
+- img "ecommerce website products"
+- heading /Rs\. \d+/ [level=2]
+- paragraph: Winter Top
+- text:  Add to cart
+- img "ecommerce website products"
+- heading /Rs\. \d+/ [level=2]
+- paragraph: Summer White Top
+- text:  Add to cart
+- link "":
+  - /url: "#recommended-item-carousel"
+- link "":
+  - /url: "#recommended-item-carousel"
